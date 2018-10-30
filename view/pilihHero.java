@@ -166,7 +166,6 @@ public class pilihHero extends JFrame{
      private void btnSubmitOnClick(ActionEvent evt){
          nama_usr = txtName.getText();
          plh = rbtnGroup.getSelection().getActionCommand();
-         System.out.println(plh);
             if(nama_usr.length() == 0){
                 JOptionPane.showMessageDialog(this,"Please enter your NAME","Validation Failed",JOptionPane.WARNING_MESSAGE);
                 return;
