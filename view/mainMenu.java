@@ -73,7 +73,6 @@ public class mainMenu extends JFrame {
         
         lblStart = new JLabel();
         lblStart.setSize(300, 50);
-        lblStart.setIcon(new ImageIcon(resizeImage("img/coba.gif",300,50)));
         btnStart.add(lblStart);
         
         btnScore = new JButton("List Score");
