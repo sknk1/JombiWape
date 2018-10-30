@@ -5,9 +5,9 @@
  */
 package view;
 
-import java.awt.Color;
-import javax.swing.JFrame;
-import javax.swing.WindowConstants;
+import java.awt.*;
+import java.awt.event.*;
+import javax.swing.*;
 
 /**
  *
@@ -27,6 +27,21 @@ public class scoreBoard extends JFrame{
         getContentPane().setLayout(null);
         getContentPane().setBackground(Color.red);
         
+        btnCancle = new JButton("Cancle");
+        btnCancle.setBounds(600, 500, 300, 50);
+        btnCancle.setPreferredSize(new Dimension (300,50));
+        btnCancle.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new mainMenu().setVisible(true);
+                setVisible(false);
+                dispose();
+            }
+});
+        this.add(btnCancle);
+        
     }
+    JButton btnCancle;
+    
  
 }
