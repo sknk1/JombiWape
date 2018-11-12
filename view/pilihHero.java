@@ -33,184 +33,261 @@ import javax.swing.WindowConstants;
  *
  * @author USER
  */
-public class pilihHero extends JFrame{
-    public pilihHero(){
-        initComponent();
-    }
+public class PilihHero extends JFrame {
+
+    int pilih,a;
     
-     private void initComponent(){
+    public int getPilih() {
+        return pilih;
+    }
+
+    public void setPilih(int pilih) {
+        this.pilih = pilih;
+    }
+
+    public PilihHero() {
+        initComponent();
+        lblHeroSelected();
+        lblClicked();
+    }
+
+    private void initComponent() {
         this.setSize(1400, 950);
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
         this.setTitle("Pilih Hero");
         this.setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().setBackground(Color.yellow);
-        
+
         pnlAlas = new JPanel();
-        pnlAlas.setSize(1400, 950);
         pnlAlas.setBounds(0, -10, 1400, 950);
         add(pnlAlas);
-        
+
         lblAlas = new JLabel();
-        lblAlas.setIcon(new ImageIcon(resizeImage("img/map/dirt.jpg",1400,950)));
-        pnlAlas.add(lblAlas);  
-        
+        lblAlas.setIcon(new ImageIcon(resizeImage("img/map/dirt.jpg", 1400, 950)));
+        pnlAlas.add(lblAlas);
+
         pnlBg = new JPanel();
         pnlBg.setLayout(null);
-        pnlBg.setSize(1200, 890);
         pnlBg.setBounds(100, 70, 1200, 890);
-        pnlBg.setBackground(new Color(0,0,0,100));
+        pnlBg.setBackground(new Color(0, 0, 0, 100));
         lblAlas.add(pnlBg);
-        
+
+        //UNTUK ICON HERO
         pnlHeroS = new JPanel();
-        pnlHeroS.setSize(380, 430);
         pnlHeroS.setBounds(10, -10, 380, 430);
         pnlBg.add(pnlHeroS);
         lblHeroS = new JLabel();
-        lblHeroS.setIcon(new ImageIcon(resizeImage("img/hero/sniper.png", 380, 430)));
+        lblHeroS.setIcon(new ImageIcon(resizeImage("img/hero/icon/sniper.jpg", 380, 430)));
         pnlHeroS.add(lblHeroS);
-        
-        pnlHeroA = new JPanel();
-        pnlHeroA.setSize(380, 430);
-        pnlHeroA.setBounds(410, -10, 380, 430);
-        pnlBg.add(pnlHeroA);
+
+        pnlHeroW = new JPanel();
+        pnlHeroW.setBounds(410, -10, 380, 430);
+        pnlBg.add(pnlHeroW);
         lblHeroA = new JLabel();
-        lblHeroA.setIcon(new ImageIcon(resizeImage("img/hero/sniper.png", 380, 430)));
-        pnlHeroA.add(lblHeroA);
-        
-        pnlHeroG = new JPanel();
-        pnlHeroG.setSize(380, 430);
-        pnlHeroG.setBounds(810, -10, 380, 430);
-        pnlBg.add(pnlHeroG);
+        lblWindS = new JLabel();
+        lblHeroA.setIcon(new ImageIcon(resizeImage("img/hero/icon/windranger.jpg", 380, 430)));
+        pnlHeroW.add(lblHeroA);
+
+        pnlHeroM = new JPanel();
+        pnlHeroM.setBounds(810, -10, 380, 430);
+        pnlBg.add(pnlHeroM);
         lblHeroG = new JLabel();
-        lblHeroG.setIcon(new ImageIcon(resizeImage("img/hero/sniper.png", 380, 430)));
-        pnlHeroG.add(lblHeroG);
-        
-        pnlHS = new JPanel();
-        pnlHS.setSize(100, 50);
-        pnlHS.setBounds(150, 460, 100, 50);
-        pnlHS.setBackground(new Color(0,0,0,0));
-        pnlBg.add(pnlHS);
-        rbtnHS = new JRadioButton("SNIPER",true);
-        rbtnHS.setActionCommand("1");
-//        rbtnHS.setBackground(new Color(0,0,0,0));
-//        rbtnHS.setForeground(Color.white);
-        pnlHS.add(rbtnHS);
-        
-        pnlHA = new JPanel();
-        pnlHA.setSize(100, 50);
-        pnlHA.setBounds(565, 460, 100, 50);
-        pnlHA.setBackground(new Color(0,0,0,0));
-        pnlBg.add(pnlHA);
-        rbtnHA = new JRadioButton("ARCHER");
-        rbtnHA.setActionCommand("2");
-//        rbtnHA.setBackground(new Color(0,0,0,0));
-//        rbtnHA.setForeground(Color.white);
-        pnlHA.add(rbtnHA);
-        
-        pnlHG = new JPanel();
-        pnlHG.setSize(100, 50);
-        pnlHG.setBounds(960, 460, 100, 50);
-        pnlHG.setBackground(new Color(0,0,0,0));
-        pnlBg.add(pnlHG);
-        rbtnHG = new JRadioButton("GOBLIN");
-        rbtnHG.setActionCommand("3");
-//        rbtnHG.setBackground(new Color(0,0,0,0));
-//        rbtnHG.setForeground(Color.white);
-        pnlHG.add(rbtnHG);
-        
-        rbtnGroup = new ButtonGroup();
-        rbtnGroup.add(rbtnHS);
-        rbtnGroup.add(rbtnHA);
-        rbtnGroup.add(rbtnHG);
-        
-        pnlName = new JPanel();
-        pnlName.setSize(380,430);
-        pnlName.setBounds(510, 600, 380, 30);
-        pnlName.setLayout(null);
-        pnlName.setBackground(Color.white);
-        lblAlas.add(pnlName);
-        lblName = new JLabel("USER NAME : ");
-        lblName.setBounds(0, 0, 190, 30);
-        pnlName.add(lblName);
+        lblMiraS = new JLabel();
+        lblHeroG.setIcon(new ImageIcon(resizeImage("img/hero/icon/mirana.jpg", 380, 430)));
+        pnlHeroM.add(lblHeroG);
+
+        //UNTUK USERNAME
+        lblName = new JLabel();
+        lblName.setIcon(new ImageIcon(resizeImage("img/hero/icon/nickname.png", 190, 190)));
+        lblName.setBounds(300, 450, 190, 190);
+        pnlBg.add(lblName);
         txtName = new JTextField(15);
-        txtName.setBounds(190, 0,190 , 30);
-        pnlName.add(txtName);
+        txtName.setBounds(520, 505, 190, 50);
+        pnlBg.add(txtName);
+
+        //LABEL BACK
+        lblCancle = new JLabel();
+        lblCancle.setBounds(225, 650, 300, 150);
+        lblCancle.setIcon(new ImageIcon(resizeImage("img/play2.png", 300, 150)));
+        pnlBg.add(lblCancle);
+
+        //LABEL SUBMIT
+        lblSubmit = new JLabel();
+        lblSubmit.setBounds(600, 650, 300, 150);
+        lblSubmit.setIcon(new ImageIcon(resizeImage("img/play3.png", 300, 150)));
+        pnlBg.add(lblSubmit);
         
-        btnSubmit = new JButton("Submit");
-        btnSubmit.setBounds(700, 750, 300, 50);
-        btnSubmit.setPreferredSize(new Dimension (300,50));
-        btnSubmit.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                btnSubmitOnClick(e);
-            }
-        });
-        pnlBg.add(btnSubmit);
-        
-        btnCancle = new JButton("Cancle");
-        btnCancle.setBounds(200, 750, 300, 50);
-        btnCancle.setPreferredSize(new Dimension(300,50));
-        btnCancle.addMouseListener(new MouseAdapter() {
+    }
+
+
+    private void lblHeroSelected() {
+        pnlCS = new JPanel();
+        pnlCS.setBounds(10, -10, 380, 430);
+        pnlBg.add(pnlCS);
+        lblSniperS = new JLabel();
+        lblSniperS.setIcon(new ImageIcon(resizeImage("img/hero/icon/sniperSelected.jpg", 380, 430)));
+        pnlCS.add(lblSniperS);
+
+        pnlCW = new JPanel();
+        pnlCW.setBounds(410, -10, 380, 430);
+        pnlBg.add(pnlCW);
+        lblWindS = new JLabel();
+        lblWindS.setIcon(new ImageIcon(resizeImage("img/hero/icon/windrangerSelected.jpg", 380, 430)));
+        pnlCW.add(lblWindS);
+
+        pnlCM = new JPanel();
+        pnlCM.setBounds(810, -10, 380, 430);
+        pnlBg.add(pnlCM);
+        lblMiraS = new JLabel();
+        lblMiraS.setIcon(new ImageIcon(resizeImage("img/hero/icon/miranaSelected.jpg", 380, 430)));
+        pnlCM.add(lblMiraS);
+    }
+
+    private void btnSubmitOnClick(ActionEvent evt) {
+        nama_usr = txtName.getText();
+        if (nama_usr.length() == 0) {
+            JOptionPane.showMessageDialog(this, "Please enter your NAME", "Validation Failed", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            new PlaySiang(this).setVisible(true);
+            setVisible(false);
+            dispose();
+        }
+
+    }
+
+    private void lblClicked() {
+        lblHeroS.addMouseListener(new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
-                new mainMenu().setVisible(true);
+                a = 1;
+                setPilih(a);
+                pnlHeroS.setVisible(false);
+                pnlCS.setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                lblHeroS.setIcon(new ImageIcon(resizeImage("img/hero/icon/sniperSelected.jpg", 380, 430)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                lblHeroS.setIcon(new ImageIcon(resizeImage("img/hero/icon/sniper.jpg", 380, 430)));
+            }
+        });
+
+        lblHeroA.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                a = 2;
+                setPilih(a);
+                pnlHeroW.setVisible(false);
+                pnlCW.setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                lblHeroA.setIcon(new ImageIcon(resizeImage("img/hero/icon/windrangerSelected.jpg", 380, 430)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                lblHeroA.setIcon(new ImageIcon(resizeImage("img/hero/icon/windranger.jpg", 380, 430)));
+            }
+        });
+
+        lblHeroG.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                a = 3;
+                setPilih(a);
+                pnlHeroM.setVisible(false);
+                pnlCM.setVisible(true);
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+                lblHeroG.setIcon(new ImageIcon(resizeImage("img/hero/icon/miranaSelected.jpg", 380, 430)));
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+                lblHeroG.setIcon(new ImageIcon(resizeImage("img/hero/icon/mirana.jpg", 380, 430)));
+            }
+        });
+
+        lblSubmit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                lblSummitMouseClicked();
+            }
+        });
+
+        lblCancle.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new MainMenu().setVisible(true);
                 setVisible(false);
                 dispose();
             }
-});
-        pnlBg.add(btnCancle);
+        });
     }
-     
-     private void btnSubmitOnClick(ActionEvent evt){
-         nama_usr = txtName.getText();
-         plh = rbtnGroup.getSelection().getActionCommand();
-            if(nama_usr.length() == 0){
-                JOptionPane.showMessageDialog(this,"Please enter your NAME","Validation Failed",JOptionPane.WARNING_MESSAGE);
-                return;
-            }else{
-                new playSiang().setVisible(true);
-                setVisible(false);
-                dispose();
-            }
-     }
-     
-     private Image resizeImage(String url,int a,int b){
+    
+    private void lblSummitMouseClicked()
+    {
+        nama_usr = txtName.getText();
+        if (nama_usr.length() == 0) {
+            JOptionPane.showMessageDialog(rootPane, "Please enter your NAME", "Validation Failed", JOptionPane.WARNING_MESSAGE);
+            return;
+        } else {
+            new PlaySiang(this).setVisible(true);
+            setVisible(false);
+            dispose();
+        }
+    }
+
+    private Image resizeImage(String url, int a, int b) {
         Image dimg = null;
-        try{
+        try {
             BufferedImage img = ImageIO.read(new File(url));
-            dimg = img.getScaledInstance(a,b,Image.SCALE_SMOOTH);
-        } catch (IOException ex){
+            dimg = img.getScaledInstance(a, b, Image.SCALE_SMOOTH);
+        } catch (IOException ex) {
             ex.printStackTrace(System.err);
         }
         return dimg;
     }
-
-    public String getNama_usr() {
-        return nama_usr;
-    }
-     
+    JPanel pnlCS;
+    JPanel pnlCW;
+    JPanel pnlCM;
+    JLabel lblSniperS;
+    JLabel lblWindS;
+    JLabel lblMiraS;
+    JLabel lblCancle;
+    JLabel lblSubmit;
     JLabel lblHeroS;
     JLabel lblHeroA;
     JLabel lblHeroG;
-     JButton btnCancle;
-     JButton btnSubmit;
-     JPanel pnlName;
-     JLabel lblName;
-     JTextField txtName;
-     JPanel pnlAlas;
-     JLabel lblAlas;
-     JPanel pnlBg;
-     JPanel pnlHeroS;
-     JPanel pnlHS;
-     JRadioButton rbtnHS;
-     JPanel pnlHeroA;
-     JPanel pnlHA;
-     JRadioButton rbtnHA;
-     JPanel pnlHeroG;
-     JPanel pnlHG;
-     JRadioButton rbtnHG;
-     ButtonGroup rbtnGroup;
-     String plh,nama_usr;
+    JButton btnCancle;
+    JButton btnSubmit;
+    JPanel pnlName;
+    JLabel lblName;
+    JTextField txtName;
+    JPanel pnlAlas;
+    JLabel lblAlas;
+    JPanel pnlBg;
+    JPanel pnlHeroS;
+    JPanel pnlHS;
+    JRadioButton rbtnHS;
+    JPanel pnlHeroW;
+    JPanel pnlHA;
+    JRadioButton rbtnHA;
+    JPanel pnlHeroM;
+    JPanel pnlHG;
+    JRadioButton rbtnHG;
+    ButtonGroup rbtnGroup;
+    String nama_usr;
+
 }
