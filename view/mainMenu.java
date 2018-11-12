@@ -26,12 +26,14 @@ import javax.swing.WindowConstants;
  *
  * @author USER
  */
-public class mainMenu extends JFrame {
-    public mainMenu(){
+public class MainMenu extends JFrame {
+
+    public MainMenu() {
         initComponent();
+        lblClicked();
     }
-    
-    private void initComponent(){
+
+    private void initComponent() {
         this.setSize(1400, 950);
         this.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
         this.setLocationRelativeTo(null);
@@ -39,85 +41,79 @@ public class mainMenu extends JFrame {
         this.setResizable(false);
         getContentPane().setLayout(null);
         getContentPane().setBackground(Color.yellow);
-        
+
         pnlAlas = new JPanel();
         pnlAlas.setSize(1400, 950);
         pnlAlas.setBounds(0, 0, 1400, 950);
         add(pnlAlas);
-        
-        lblAlas = new JLabel();
-        lblAlas.setIcon(new ImageIcon(resizeImage("img/pvz.jpg",1400,950)));
-        pnlAlas.add(lblAlas);         
-        
-        pnlJudul = new JPanel();
-        pnlJudul.setSize(950, 755);
-        pnlJudul.setBackground(Color.red);
-        pnlJudul.setBounds(450, -20, 950, 755);
-        lblAlas.add(pnlJudul);   
-        lblJudul = new JLabel();
-        lblJudul.setIcon(new ImageIcon(resizeImage("img/contohJudul.png",950,755)));
-        pnlJudul.add(lblJudul);
-    
-        btnStart = new JButton("Start Game");
-        btnStart.setBounds(70, 50, 300, 50);
-        btnStart.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                new pilihHero().setVisible(true);
-                setVisible(false);
-                dispose();
-            }
-        });
-        btnStart.setPreferredSize(new Dimension (300,50));
-        lblAlas.add(btnStart);
-        
-        lblStart = new JLabel();
-        lblStart.setSize(300, 50);
-        btnStart.add(lblStart);
-        
-        btnScore = new JButton("List Score");
-        btnScore.setBounds(70, 150, 300, 50);
-        btnScore.addMouseListener(new MouseAdapter(){
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                new scoreBoard().setVisible(true);
-                setVisible(false);
-                dispose();
-            }
-        });
-        btnScore.setPreferredSize(new Dimension (300,50));
-        lblAlas.add(btnScore);
 
-        btnExit = new JButton("Exit");
-        btnExit.setBounds(70, 250, 300, 50);
-        btnExit.setPreferredSize(new Dimension (300,50));
-        btnExit.addMouseListener(new MouseAdapter() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-               setVisible(false);
-               dispose();
-            }
-        });
-        lblAlas.add(btnExit);
+        lblAlas = new JLabel();
+        lblAlas.setIcon(new ImageIcon(resizeImage("img/Judul_fix.jpg", 1400, 950)));
+        pnlAlas.add(lblAlas);
+
+        lblStart = new JLabel();
+        lblStart.setBounds(170, 600, 300, 150);
+        lblStart.setIcon(new ImageIcon(resizeImage("img/play.png", 300, 150)));
+        lblAlas.add(lblStart);
+
+        lblScore = new JLabel();
+        lblScore.setBounds(1200, 0, 60, 60);
+        lblScore.setIcon(new ImageIcon(resizeImage("img/led.png", 60, 60)));
+        lblAlas.add(lblScore);
+
+        lblExit = new JLabel();
+        lblExit.setBounds(1300, 0, 60, 60);
+        lblExit.setIcon(new ImageIcon(resizeImage("img/exit.png", 60, 60)));
+        lblAlas.add(lblExit);
     }
 //    private void btnStartClicked(){
 //        JOptionPane.showInputDialog(null,"Mouse Clicked");
-//        new pilihHero().setVisible(true);
+//        new PilihHero().setVisible(true);
 //        this.setVisible(false);
 //
 //    }
-   
-    private Image resizeImage(String url,int a,int b){
+
+    private Image resizeImage(String url, int a, int b) {
         Image dimg = null;
-        try{
+        try {
             BufferedImage img = ImageIO.read(new File(url));
-            dimg = img.getScaledInstance(a,b,Image.SCALE_SMOOTH);
-        } catch (IOException ex){
+            dimg = img.getScaledInstance(a, b, Image.SCALE_SMOOTH);
+        } catch (IOException ex) {
             ex.printStackTrace(System.err);
         }
         return dimg;
     }
- 
+    
+    private void lblClicked(){
+        lblStart.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new PilihHero().setVisible(true);
+                setVisible(false);
+                dispose();
+            }
+        });
+        
+        lblScore.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                new ScoreBoard().setVisible(true);
+                setVisible(false);
+                dispose();
+            }
+        });
+        
+        lblExit.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                setVisible(false);
+                dispose();
+            }
+        });
+    }
+    
+    JLabel lblScore;
+    JLabel lblExit;
     JPanel pnlAlas;
     JLabel lblAlas;
     JButton btnStart;
