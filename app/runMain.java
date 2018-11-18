@@ -4,16 +4,24 @@
  * and open the template in the editor.
  */
 package app;
-import view.mainMenu;
-import view.playSiang;
-/** 
+
+import view.MainMenu;
+import view.PlaySiang;
+import view.PilihHero;
+
+/**
  *
  * @author USER
  */
-public class runMain {
+public class RunMain {
+
     public static void main(String[] args) {
-        mainMenu mm = new mainMenu();
-        mm.setVisible(true);
-            
+//        MainMenu mm = new MainMenu();
+//        mm.setVisible(true);
+
+//       PlaySiang p =  new PlaySiang();
+//       p.setVisible(true);
+//        
+        new PilihHero().setVisible(true);
     }
 }
