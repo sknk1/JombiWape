@@ -7,6 +7,7 @@ package view;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -103,7 +104,9 @@ public class PilihHero extends JFrame {
         lblName.setIcon(new ImageIcon(resizeImage("img/hero/icon/nickname.png", 190, 190)));
         lblName.setBounds(300, 450, 190, 190);
         pnlBg.add(lblName);
+        Font font = new Font("Verdana", Font.BOLD,30);
         txtName = new JTextField(15);
+        txtName.setFont(font);
         txtName.setBounds(520, 505, 190, 50);
         pnlBg.add(txtName);
 
@@ -143,19 +146,6 @@ public class PilihHero extends JFrame {
         lblMiraS = new JLabel();
         lblMiraS.setIcon(new ImageIcon(resizeImage("img/hero/icon/miranaSelected.jpg", 380, 430)));
         pnlCM.add(lblMiraS);
-    }
-
-    private void btnSubmitOnClick(ActionEvent evt) {
-        nama_usr = txtName.getText();
-        if (nama_usr.length() == 0) {
-            JOptionPane.showMessageDialog(this, "Please enter your NAME", "Validation Failed", JOptionPane.WARNING_MESSAGE);
-            return;
-        } else {
-            new PlaySiang(this).setVisible(true);
-            setVisible(false);
-            dispose();
-        }
-
     }
 
     private void lblClicked() {
@@ -239,6 +229,7 @@ public class PilihHero extends JFrame {
     private void lblSummitMouseClicked()
     {
         nama_usr = txtName.getText();
+        setNama_usr(nama_usr);
         if (nama_usr.length() == 0) {
             JOptionPane.showMessageDialog(rootPane, "Please enter your NAME", "Validation Failed", JOptionPane.WARNING_MESSAGE);
             return;
@@ -289,5 +280,15 @@ public class PilihHero extends JFrame {
     JRadioButton rbtnHG;
     ButtonGroup rbtnGroup;
     String nama_usr;
+
+    public String getNama_usr() {
+        return nama_usr;
+    }
+
+    public void setNama_usr(String nama_usr) {
+        this.nama_usr = nama_usr;
+    }
+    
+    
 
 }

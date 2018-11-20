@@ -33,13 +33,6 @@ public class Zombie extends JLabel implements Runnable {
     @Override
     public void run() {
         Random rand = new Random();
-
-//        int sleepRandom = rand.nextInt(5)*1000;
-//        try {
-//            Thread.sleep(sleepRandom);
-//        } catch (InterruptedException ex) {
-//            Logger.getLogger(Zombie.class.getName()).log(Level.SEVERE, null, ex);
-//        }
         int a = 0;
         int x = pnj;
         int y = 0;
@@ -61,12 +54,11 @@ public class Zombie extends JLabel implements Runnable {
             if (x > 300) {
                 try {
                     setXx(x);
-                    x = this.getLocation().x - 20;
-                    System.out.println("ZOB"+getXx());
+                    x = this.getLocation().x - 4;
                     this.setLocation(x, y);
                     repaint();
                     this.lblAlas.repaint();
-                    Thread.sleep(200);
+                    Thread.sleep(50);
                 } catch (Exception e) {
 
                 }
@@ -77,7 +69,6 @@ public class Zombie extends JLabel implements Runnable {
             }
         }
         setStatus(status);
-        JOptionPane.showMessageDialog(null, "GAME OVER");
     }
 
     public int getXx() {

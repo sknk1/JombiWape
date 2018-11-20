@@ -30,12 +30,12 @@ public class ThreadKeluar implements Runnable {
     @Override
     public void run() {
         while (true) {
-            
-            Zombie z = new Zombie(myFrame.lblAlas);
-            z.setIcon(new ImageIcon(resizeImage("img/hero/play/sniperFix.jpg", 105, 144)));
-            lblAlas.add(z);
-            Thread t = new Thread(z);
-            t.start();
+//            
+//            Zombie z = new Zombie(myFrame.lblAlas);
+//            z.setIcon(new ImageIcon(resizeImage("img/hero/play/sniperFix.jpg", 105, 144)));
+//            lblAlas.add(z);
+//            Thread t = new Thread(z);
+//            t.start();
 
         }
 
